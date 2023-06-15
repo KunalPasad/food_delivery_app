@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:food_delivery_app/home/food_page_body.dart';
+import 'package:food_delivery_app/pages/home/food_page_body.dart';
 import 'package:food_delivery_app/utils/colors.dart';
 import 'package:food_delivery_app/widgets/big_text.dart';
 import 'package:food_delivery_app/widgets/small_text.dart';
@@ -40,7 +40,7 @@ class _MainFoodPageState extends State<MainFoodPage> {
                       Row(
                         children: [
                           SmallText(
-                            text: 'Narsingdi',
+                            text: 'Mumbai',
                             color: Colors.black54,
                           ),
                           Icon(
@@ -54,14 +54,14 @@ class _MainFoodPageState extends State<MainFoodPage> {
                     child: Container(
                       width: Dimensions.width45,
                       height: Dimensions.height45,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(Dimensions.radius15),
+                        color: AppColors.mainColor,
+                      ),
                       child: Icon(
                         Icons.search,
                         color: Colors.white,
                         size: Dimensions.iconSize24,
-                      ),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(Dimensions.radius15),
-                        color: AppColors.mainColor,
                       ),
                     ),
                   ),
@@ -69,7 +69,11 @@ class _MainFoodPageState extends State<MainFoodPage> {
               ),
             ),
           ),
-          FoodPageBody(),
+          Expanded(
+            child: SingleChildScrollView(
+              child: FoodPageBody()
+            )
+          ),
         ],
       ),
     );

@@ -4,6 +4,9 @@ import 'package:food_delivery_app/utils/colors.dart';
 import 'package:food_delivery_app/widgets/big_text.dart';
 import 'package:food_delivery_app/widgets/small_text.dart';
 import 'package:food_delivery_app/utils/dimensions.dart';
+import 'package:get/get.dart';
+import 'package:food_delivery_app/controllers/popular_product_controller.dart';
+import 'package:food_delivery_app/controllers/recommended_product_controller.dart';
 
 class MainFoodPage extends StatefulWidget {
   const MainFoodPage({Key? key}) : super(key: key);
@@ -13,10 +16,15 @@ class MainFoodPage extends StatefulWidget {
 }
 
 class _MainFoodPageState extends State<MainFoodPage> {
+  Future<void> _loadResource() async{
+    await Get.find<PopularProductController>().getPopularProductList();
+    await Get.find<RecommendedProductController>().getRecommendedProductList();
+  }
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
+    return RefreshIndicator(
+      onRefresh: _loadResource,
+      child: Column(
         children: [
           Container(
             child: Container(
@@ -43,9 +51,7 @@ class _MainFoodPageState extends State<MainFoodPage> {
                             text: 'Mumbai',
                             color: Colors.black54,
                           ),
-                          Icon(
-                            Icons.arrow_drop_down_rounded
-                          ),
+                          Icon(Icons.arrow_drop_down_rounded),
                         ],
                       ),
                     ],
@@ -55,7 +61,8 @@ class _MainFoodPageState extends State<MainFoodPage> {
                       width: Dimensions.width45,
                       height: Dimensions.height45,
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(Dimensions.radius15),
+                        borderRadius:
+                            BorderRadius.circular(Dimensions.radius15),
                         color: AppColors.mainColor,
                       ),
                       child: Icon(
@@ -69,11 +76,7 @@ class _MainFoodPageState extends State<MainFoodPage> {
               ),
             ),
           ),
-          Expanded(
-            child: SingleChildScrollView(
-              child: FoodPageBody()
-            )
-          ),
+          Expanded(child: SingleChildScrollView(child: FoodPageBody())),
         ],
       ),
     );

@@ -51,14 +51,14 @@ class _SplashScreenState extends State<SplashScreen> with TickerProviderStateMix
             scale: animation,
             child: Center(
               child: Image.asset(
-                'assets/image/splash logo 1.png',
-                width: Dimensions.splashImg / 1.5,
+                'assets/image/logo part 1.png',
+                width: Dimensions.splashImg,
               ),
             ),
           ),
           Center(
             child: Image.asset(
-              'assets/image/splash logo 2.png',
+              'assets/image/logo part 2.png',
               width: Dimensions.splashImg,
             ),
           ),

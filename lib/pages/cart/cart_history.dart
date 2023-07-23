@@ -1,7 +1,6 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:food_delivery_app/base/no-data-page.dart';
+import 'package:food_delivery_app/base/no_data_page.dart';
 import 'package:food_delivery_app/controllers/cart_controller.dart';
 import 'package:food_delivery_app/routes/route_helper.dart';
 import 'package:food_delivery_app/utils/app_constants.dart';
@@ -44,7 +43,7 @@ class CartHistory extends StatelessWidget {
 
     Widget timeWidget(int index) {
       var outputDate = DateTime.now().toString();
-      if(index < getCartHistoryList.length){
+      if (index < getCartHistoryList.length) {
         DateTime parseDate = DateFormat('yyyy-MM-dd HH:mm:ss')
             .parse(getCartHistoryList[listCounter].time!);
         var inputDate = DateTime.parse(parseDate.toString());
@@ -126,20 +125,22 @@ class CartHistory extends StatelessWidget {
                                                         right:
                                                             Dimensions.width05),
                                                     decoration: BoxDecoration(
-                                                        borderRadius: BorderRadius
-                                                            .circular(Dimensions
-                                                                    .radius15 /
-                                                                2),
-                                                        image: DecorationImage(
-                                                            fit: BoxFit.cover,
-                                                            image: NetworkImage(AppConstants
-                                                                    .BASE_URL +
-                                                                AppConstants
-                                                                    .UPLOAD_URL +
-                                                                getCartHistoryList[
-                                                                        listCounter -
-                                                                            1]
-                                                                    .img!))),
+                                                      borderRadius: BorderRadius
+                                                          .circular(Dimensions
+                                                                  .radius15 /
+                                                              2),
+                                                      image: DecorationImage(
+                                                        fit: BoxFit.cover,
+                                                        image: NetworkImage(AppConstants
+                                                                .BASE_URL +
+                                                            AppConstants
+                                                                .UPLOAD_URL +
+                                                            getCartHistoryList[
+                                                                    listCounter -
+                                                                        1]
+                                                                .img!),
+                                                      ),
+                                                    ),
                                                   )
                                                 : Container();
                                           }),
@@ -232,7 +233,7 @@ class CartHistory extends StatelessWidget {
                     child: Center(
                       child: NoDataPage(
                         text: "You didn't buy anything so far!",
-                        imgPath: 'assets/image/food1.jpeg',
+                        imgPath: 'assets/image/empty_box.png',
                       ),
                     ),
                   );
